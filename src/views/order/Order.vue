@@ -1,0 +1,13 @@
+<script setup lang="ts"></script>
+
+<template>
+  <div class="order">
+    <h2>order</h2>
+  </div>
+</template>
+
+<style lang="less" scoped>
+.order {
+  color: red;
+}
+</style>
