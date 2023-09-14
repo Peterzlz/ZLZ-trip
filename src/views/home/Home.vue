@@ -3,6 +3,18 @@ import { getAssetURL } from '@/utils/load_assets'
 
 // 轮播图
 const images = ['home/banner.webp', 'home/banner.webp']
+
+// 我的位置点击获取地理位置信息
+function positionClick() {
+  navigator.geolocation.getCurrentPosition(
+    (res) => {
+      console.log('获取成功当前位置：', res)
+    },
+    (err) => {
+      console.log('获取失败当前位置：', err)
+    }
+  )
+}
 </script>
 
 <template>
@@ -18,7 +30,7 @@ const images = ['home/banner.webp', 'home/banner.webp']
 
     <div class="location">
       <div class="city">广州</div>
-      <div class="position">
+      <div class="position" @click="positionClick">
         <span>我的位置</span>
         <img src="@/assets/img/home/icon_location.png" alt="" />
       </div>
