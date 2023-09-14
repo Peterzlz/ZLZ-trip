@@ -9,8 +9,4 @@ import TabBar from '@/components/tab_bar/Tabbar.vue'
   </div>
 </template>
 
-<style lang="less" scoped>
-.app {
-  color: red;
-}
-</style>
+<style lang="less" scoped></style>
