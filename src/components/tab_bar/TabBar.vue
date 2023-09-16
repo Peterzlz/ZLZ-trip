@@ -31,3 +31,4 @@ const currentIndex = ref(0)
   }
 }
 </style>
+@/assets/data/tab_bar

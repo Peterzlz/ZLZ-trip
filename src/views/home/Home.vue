@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { getAssetURL } from '@/utils/load_assets'
+import { useRouter } from 'vue-router'
+import useCityStore from '@/stores/city'
+import { storeToRefs } from 'pinia'
 
 // 轮播图
 const images = ['home/banner.webp', 'home/banner.webp']
@@ -15,11 +18,24 @@ function positionClick() {
     }
   )
 }
+
+// 点击跳转城市选择页面
+const router = useRouter()
+function cityClick() {
+  router.push('/city')
+}
+
+// 获取到在城市(city)页面选中的城市，将城市名显示到页面
+const cityStore = useCityStore()
+const { selectCity } = storeToRefs(cityStore)
 </script>
 
 <template>
   <div class="home">
+    <!-- 顶部导航栏模块 -->
     <div class="nav-bar">弘源租房</div>
+
+    <!-- 轮播图模块 -->
     <div class="swipe">
       <van-swipe :autoplay="3000" lazy-render>
         <van-swipe-item v-for="image in images" :key="image">
@@ -28,8 +44,9 @@ function positionClick() {
       </van-swipe>
     </div>
 
+    <!-- 位置信息模块 -->
     <div class="location">
-      <div class="city">广州</div>
+      <div class="city" @click="cityClick">{{ selectCity }}</div>
       <div class="position" @click="positionClick">
         <span>我的位置</span>
         <img src="@/assets/img/home/icon_location.png" alt="" />
