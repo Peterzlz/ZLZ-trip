@@ -133,41 +133,39 @@ const { hotSuggests } = storeToRefs(homeStore)
 </template>
 
 <style lang="less" scoped>
-.home {
-  .nav-bar {
-    color: var(--primary-color);
-    height: 47px;
-    line-height: 47px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
+.nav-bar {
+  color: var(--primary-color);
+  height: 47px;
+  line-height: 47px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.swipe {
+  img {
+    width: 100vw;
+  }
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 44px;
+  font-size: 14px;
+  .city {
+    flex: 1;
   }
 
-  .swipe {
+  .position {
+    span {
+      font-size: 12px;
+    }
     img {
-      width: 100%;
-    }
-  }
-
-  .location {
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    height: 44px;
-    font-size: 14px;
-    .city {
-      flex: 1;
-    }
-
-    .position {
-      span {
-        font-size: 12px;
-      }
-      img {
-        margin-left: 5px;
-        height: 18px;
-        width: 18px;
-      }
+      margin-left: 5px;
+      height: 18px;
+      width: 18px;
     }
   }
 }
