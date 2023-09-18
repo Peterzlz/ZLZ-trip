@@ -1,8 +1,15 @@
 :root {
+  /* 主体颜色 */
   --primary-color: #ff9854;
+
+  /* 横线颜色：home页面的 */
   --line-color: #faf8f9;
 
+  /* 搜索小图标颜色：city页面 搜索框左边的小图标 */
   --van-search-left-icon-color: var(--primary-color) !important;
+  
+  /* 渐变颜色：home页面的 开始搜索按钮 */
+  --theme-linear-gradient: linear-gradient(90deg, #fa8c1d, #fcaf3f);
 }
 
 /* body {

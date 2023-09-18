@@ -5,3 +5,9 @@ export function getHotSuggestsData() {
     url: '/home/hotSuggests'
   })
 }
+
+export function getHomeCategoriesData() {
+  return hyRequest.get({
+    url: '/home/categories'
+  })
+}
