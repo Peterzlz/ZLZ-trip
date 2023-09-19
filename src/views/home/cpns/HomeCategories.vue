@@ -4,12 +4,12 @@ import { storeToRefs } from 'pinia'
 
 const homeStore = useHomeStore()
 homeStore.fetchHomeCategoriesDate()
-const { HomeCategories } = storeToRefs(homeStore)
+const { homeCategories } = storeToRefs(homeStore)
 </script>
 
 <template>
   <div class="home-categories">
-    <template v-for="(item, index) in HomeCategories" :key="index">
+    <template v-for="(item, index) in homeCategories" :key="index">
       <div class="item">
         <img :src="item.pictureUrl" alt="" />
         <span>{{ item.title }}</span>
@@ -26,6 +26,9 @@ const { HomeCategories } = storeToRefs(homeStore)
   margin-top: 8px;
   overflow-x: auto;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
   .item {
     display: flex;
     flex-direction: column;
