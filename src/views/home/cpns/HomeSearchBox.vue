@@ -29,6 +29,7 @@ function cityClick() {
 // 获取到在城市(city)页面选中的城市，将城市名显示到页面
 const cityStore = useCityStore()
 const { selectCity } = storeToRefs(cityStore)
+console.log(selectCity)
 
 // 日期选择
 // 1.1 绑定日期选择的弹窗：show 值
