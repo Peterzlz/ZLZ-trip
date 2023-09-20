@@ -3,10 +3,11 @@ import { formatDate, getStayDate } from '@/utils/format_date'
 
 import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 import useCityStore from '@/stores/city'
 import useHomeStore from '@/stores/home'
+import useMainStore from '@/stores/main'
 
 // 我的位置点击获取地理位置信息
 function positionClick() {
@@ -30,25 +31,28 @@ function cityClick() {
 const cityStore = useCityStore()
 const { selectCity } = storeToRefs(cityStore)
 
+const mainStore = useMainStore()
+let { startDate, leaveDate } = storeToRefs(mainStore)
 // 日期选择
 // 1.1 绑定日期选择的弹窗：show 值
 const show = ref(false)
 // 1.2 入店日期 和 离店日期：利用 util文件夹 里的日期格式化工具，xx月xx日
-const startDate: any = ref(formatDate(new Date()))
-const leaveDate: any = ref(formatDate(new Date().getTime() + 24 * 60 * 60 * 1000))
+const startDateStr = computed(() => formatDate(startDate.value))
+const leaveDateStr = computed(() => formatDate(leaveDate.value))
 // 1.3 获取要待的晚上数
-let stayDate = ref(getStayDate(new Date().getTime(), new Date().getTime() + 24 * 60 * 60 * 1000))
+let stayDate = ref(getStayDate(startDate.value, leaveDate.value))
 // 1.4 日历组件van-calendar中的点击事件：
 function onConfirm(values: any) {
   // 获取日历组件中选择的入店和离店日期：values值是一个数组，保存了入店和离店日期，
   const selectSatrtDate = values[0]
   const selectEndDate = values[1]
-  // 获取要待的晚上数：利用untils里的工具
-  stayDate.value = getStayDate(selectSatrtDate, selectEndDate)
 
   // 对日期进行格式化：显示 xx月xx日
-  startDate.value = formatDate(selectSatrtDate)
-  leaveDate.value = formatDate(selectEndDate)
+  mainStore.startDate = selectSatrtDate
+  mainStore.leaveDate = selectEndDate
+
+  // 获取要待的晚上数：利用untils里的工具
+  stayDate.value = getStayDate(selectSatrtDate, selectEndDate)
 
   // 隐藏日期选择的弹窗
   show.value = false
@@ -68,8 +72,8 @@ function searchClick() {
   router.push({
     path: '/search',
     query: {
-      startDate: startDate.value,
-      leaveDate: leaveDate.value,
+      startDate: startDateStr.value,
+      leaveDate: leaveDateStr.value,
       selectCity: selectCity.value
     }
   })
@@ -92,14 +96,14 @@ function searchClick() {
       <div class="start">
         <div class="date">
           <span class="tip">入住</span>
-          <span class="time">{{ startDate }}</span>
+          <span class="time">{{ startDateStr }}</span>
         </div>
         <div class="stay">共{{ stayDate }}晚</div>
       </div>
       <div class="end">
         <div class="date">
           <span class="tip">离店</span>
-          <span class="time">{{ leaveDate }}</span>
+          <span class="time">{{ leaveDateStr }}</span>
         </div>
       </div>
     </div>
