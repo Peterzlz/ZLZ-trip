@@ -1,6 +1,9 @@
 import axios from 'axios'
 import type { AxiosInstance } from 'axios'
 import type { HYRequestConfig } from './type'
+import useMainStore from '@/stores/main'
+
+const mainStore = useMainStore()
 
 // 拦截器: 蒙版Loading/token/修改配置
 
@@ -25,17 +28,21 @@ class HYRequest {
     this.instance.interceptors.request.use(
       (config) => {
         // loading/token
+        mainStore.loading = true
         return config
       },
       (err) => {
+        mainStore.loading = false
         return err
       }
     )
     this.instance.interceptors.response.use(
       (res) => {
+        mainStore.loading = false
         return res.data
       },
       (err) => {
+        mainStore.loading = false
         return err
       }
     )

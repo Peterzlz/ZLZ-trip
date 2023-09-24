@@ -2,8 +2,8 @@
 // 组件：
 import HomeSearchBox from './cpns/HomeSearchBox.vue'
 import HomeCategories from './cpns/HomeCategories.vue'
-import HomeHouseList from './cpns/HomeHouseList.vue'
 import SearchBar from '@/components/search_bar/SearchBar.vue'
+import HomeHouseList from './cpns/HomeHouseList.vue'
 
 // 状态管理：
 import useHomeStore from '@/stores/home'
@@ -84,7 +84,7 @@ const isShowSearchBar = computed(() => {
 
 .swipe {
   img {
-    width: 100vw;
+    width: 100%;
   }
 }
 

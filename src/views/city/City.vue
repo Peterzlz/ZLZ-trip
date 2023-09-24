@@ -38,12 +38,15 @@ const { allCities } = storeToRefs(cityStore)
 </template>
 
 <style lang="less" scoped>
-.top {
-  position: relative;
-  z-index: 9;
-}
-.content {
-  height: calc(100vh - 98px);
-  overflow-y: auto;
+.city {
+  background-color: #fff;
+  .top {
+    position: relative;
+    z-index: 9;
+  }
+  .content {
+    height: calc(100vh - 98px);
+    overflow-y: auto;
+  }
 }
 </style>

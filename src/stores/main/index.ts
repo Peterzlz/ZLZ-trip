@@ -8,7 +8,8 @@ const useMainStore = defineStore('main', {
     token: '',
 
     startDate: startDate,
-    leaveDate: leaveDate
+    leaveDate: leaveDate,
+    loading: false
   })
 })
 

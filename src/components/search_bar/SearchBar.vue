@@ -7,7 +7,7 @@ const mainStore = useMainStore()
 const { startDate, leaveDate } = storeToRefs(mainStore)
 const stayDateStr = formatDate(startDate.value, 'MM.DD')
 const leaveDateStr = formatDate(leaveDate.value, 'MM.DD')
-console.log(stayDateStr, leaveDateStr)
+
 </script>
 
 <template>

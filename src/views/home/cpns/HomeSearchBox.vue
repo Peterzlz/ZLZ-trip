@@ -30,7 +30,6 @@ function cityClick() {
 // 获取到在城市(city)页面选中的城市，将城市名显示到页面
 const cityStore = useCityStore()
 const { selectCity } = storeToRefs(cityStore)
-console.log(selectCity)
 
 const mainStore = useMainStore()
 let { startDate, leaveDate } = storeToRefs(mainStore)
